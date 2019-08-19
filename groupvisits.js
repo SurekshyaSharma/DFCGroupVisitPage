@@ -38,13 +38,33 @@ $(document).ready(
                     else if (month > 7 && month < 12){ 
                         year_fall =  date.getFullYear(); 
                     }  
-                });   
- 
-                if (year_spring > (year_summer &  year_fall)){   
-                    $('#summer').append('<h2 id="semsterHeader">'+'Summer '+ year_summer +'</h2>');
-                    $('#fall').append('<h2 id="semsterHeader">Fall '+ year_fall +'</h2>');
-                    $('#spring').append('<h2 id="semsterHeader">'+'Spring '+ year_spring +'</h2>');
+                });  
+                
+                if((year_spring > year_fall) || (year_spring > year_summer)) {
+                    
+                    $('#GroupVisit').empty();
+
+                    $('#GroupVisit').append(
+                        
+                        '<div id ="summer"></div>' +
+                        '<div id ="fall"></div>' +
+                        '<div id="spring"></div>'
+                    );
+                } else {
+
+                    $('#GroupVisit').empty();
+
+                    $('#GroupVisit').append(
+
+                        '<div id="spring"></div>' +
+                        '<div id ="summer"></div>' +
+                        '<div id ="fall"></div>'
+                    );
                 }
+
+                $('#spring').append('<h2 id="semsterHeader">'+'Spring '+ year_spring +'</h2>');
+                $('#summer').append('<h2 id="semsterHeader">'+'Summer '+ year_summer +'</h2>');
+                $('#fall').append('<h2 id="semsterHeader">Fall '+ year_fall +'</h2>');
 
                 $.each(data, function (index, value) { 
 
